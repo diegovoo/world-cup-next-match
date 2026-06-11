@@ -1,0 +1,11 @@
+{
+  "uuid": "world-cup-next-match@diegovoo.github.io",
+  "name": "World Cup Next Match",
+  "description": "Shows the selected team's next 2026 FIFA World Cup match in the top bar.",
+  "shell-version": [
+    "46"
+  ],
+  "settings-schema": "org.gnome.shell.extensions.world-cup-next-match",
+  "url": "https://github.com/diegovoo/world-cup-next-match",
+  "version": 1
+}
