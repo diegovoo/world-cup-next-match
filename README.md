@@ -47,11 +47,6 @@ To mark a team as eliminated explicitly, list it under `eliminatedTeams`:
 }
 ```
 
-The extension can also infer elimination once the next knockout stage is fully
-published. For example, if all Round of 32 fixtures are present and the selected
-team is absent, it shows the eliminated state after that team's final group
-match has finished.
-
 A knockout match uses the same fields as a bundled match, plus a `stage`:
 
 ```json

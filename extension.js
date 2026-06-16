@@ -24,9 +24,8 @@ const UPDATE_INTERVAL_SECONDS = 6 * 60 * 60;
 const MINUTE_MS = 60 * 1000;
 const HOUR_MS = 60 * MINUTE_MS;
 
-// How long a match keeps showing as LIVE after kickoff. (since no API to pull when a match is done)
-const GROUP_DISPLAY_DURATION_MS = 2 * HOUR_MS;
-const KNOCKOUT_DISPLAY_DURATION_MS = 2.5 * HOUR_MS;
+// How long a match keeps showing as LIVE after kickoff. (since no API to pull when match is done)
+const MATCH_DISPLAY_DURATION_MS = 2.5 * HOUR_MS;
 
 const STAGE_LABELS = {
     group: 'Group stage',
@@ -38,13 +37,6 @@ const STAGE_LABELS = {
     semifinals: 'Semi-finals',
     'third-place': 'Third-place match',
     final: 'Final',
-};
-
-const COMPLETE_STAGE_MATCH_COUNTS = {
-    'round-of-32': 16,
-    'round-of-16': 8,
-    quarterfinals: 4,
-    semifinals: 2,
 };
 
 const TEAM_FLAG_CODES = {
@@ -235,16 +227,6 @@ function mergeSchedules(bundledSchedule, remoteSchedule) {
     }, 'merged schedule');
 }
 
-function canonicalStage(stage) {
-    if (stage === 'quarterfinal')
-        return 'quarterfinals';
-
-    if (stage === 'semifinal')
-        return 'semifinals';
-
-    return stage || '';
-}
-
 function regionalIndicatorFlag(countryCode) {
     return countryCode
         .toUpperCase()
@@ -274,16 +256,6 @@ function flagForTeam(team) {
     return regionalIndicatorFlag(code);
 }
 
-function isKnockoutMatch(match) {
-    return Boolean(match.stage) && match.stage !== 'group';
-}
-
-function matchDisplayDuration(match) {
-    return isKnockoutMatch(match)
-        ? KNOCKOUT_DISPLAY_DURATION_MS
-        : GROUP_DISPLAY_DURATION_MS;
-}
-
 function formatTeam(team, showFlags) {
     const flag = showFlags ? flagForTeam(team) : '';
     return flag ? `${team} ${flag}` : team;
@@ -295,7 +267,7 @@ function formatFixture(match, showFlags) {
 
 function isMatchLive(match, nowMs) {
     return nowMs >= match.kickoffMs &&
-        nowMs < match.kickoffMs + matchDisplayDuration(match);
+        nowMs < match.kickoffMs + MATCH_DISPLAY_DURATION_MS;
 }
 
 function formatMatchState(match, nowMs) {
@@ -337,7 +309,7 @@ function formatStage(match) {
     if (match.group)
         return `Group ${match.group}`;
 
-    return STAGE_LABELS[match.stage] ?? 'World Cup';
+    return match.stage === 'group' ? STAGE_LABELS.group : 'World Cup';
 }
 
 function secondsUntilNextRefresh(match, nowMs) {
@@ -346,19 +318,10 @@ function secondsUntilNextRefresh(match, nowMs) {
 
     const msUntilKickoff = match.kickoffMs - nowMs;
 
-    if (msUntilKickoff <= 0) {
-        const msUntilCurrentDisplayExpires =
-            match.kickoffMs + matchDisplayDuration(match) - nowMs;
-        return Math.max(60, Math.ceil(msUntilCurrentDisplayExpires / 1000));
-    }
+    if (msUntilKickoff > 0 && msUntilKickoff <= HOUR_MS)
+        return 60;
 
-    if (msUntilKickoff > HOUR_MS) {
-        const msUntilHourBoundary = msUntilKickoff % HOUR_MS || HOUR_MS;
-        return Math.max(60, Math.ceil(Math.min(msUntilHourBoundary, msUntilKickoff) / 1000));
-    }
-
-    const msUntilMinuteBoundary = MINUTE_MS - (nowMs % MINUTE_MS);
-    return Math.max(1, Math.ceil(Math.min(msUntilMinuteBoundary, msUntilKickoff) / 1000));
+    return 30 * 60;
 }
 
 const NextMatchIndicator = GObject.registerClass(
@@ -427,70 +390,12 @@ class NextMatchIndicator extends PanelMenu.Button {
             if (match.home !== team && match.away !== team)
                 return false;
 
-            return match.kickoffMs + matchDisplayDuration(match) > nowMs;
+            return match.kickoffMs + MATCH_DISPLAY_DURATION_MS > nowMs;
         }) ?? null;
     }
 
-    _isTeamEliminated(team, nowMs) {
-        if (!this._schedule)
-            return false;
-
-        if (this._schedule.eliminatedTeams.includes(team))
-            return true;
-
-        const teamMatches = this._schedule.matches.filter(match =>
-            match.home === team || match.away === team);
-        if (!teamMatches.length)
-            return false;
-
-        const lastTeamMatch = teamMatches[teamMatches.length - 1];
-        if (nowMs < lastTeamMatch.kickoffMs + matchDisplayDuration(lastTeamMatch))
-            return false;
-
-        const nextMatch = teamMatches.find(match =>
-            match.kickoffMs + matchDisplayDuration(match) > nowMs);
-        if (nextMatch)
-            return false;
-
-        return this._hasCompleteLaterStageWithoutTeam(team, lastTeamMatch);
-    }
-
-    _hasCompleteLaterStageWithoutTeam(team, lastTeamMatch) {
-        const lastStage = canonicalStage(lastTeamMatch.stage);
-
-        if (lastStage === 'final' || lastStage === 'third-place')
-            return false;
-
-        if (lastStage === 'semifinals')
-            return this._areFinalFixturesCompleteWithoutTeam(team);
-
-        const nextStage = {
-            group: 'round-of-32',
-            'round-of-32': 'round-of-16',
-            'round-of-16': 'quarterfinals',
-            quarterfinals: 'semifinals',
-        }[lastStage];
-
-        if (!nextStage)
-            return false;
-
-        const nextStageMatches = this._schedule.matches.filter(match =>
-            canonicalStage(match.stage) === nextStage);
-
-        if (nextStageMatches.length < COMPLETE_STAGE_MATCH_COUNTS[nextStage])
-            return false;
-
-        return !nextStageMatches.some(match => match.home === team || match.away === team);
-    }
-
-    _areFinalFixturesCompleteWithoutTeam(team) {
-        const finalStageMatches = this._schedule.matches.filter(match =>
-            ['final', 'third-place'].includes(canonicalStage(match.stage)));
-
-        if (finalStageMatches.length < 2)
-            return false;
-
-        return !finalStageMatches.some(match => match.home === team || match.away === team);
+    _isTeamEliminated(team) {
+        return Boolean(this._schedule?.eliminatedTeams.includes(team));
     }
 
     _refresh() {
@@ -509,7 +414,7 @@ class NextMatchIndicator extends PanelMenu.Button {
         } else if (!team) {
             this._label.text = 'World Cup';
             this._addStatusItem('Choose a team in Preferences');
-        } else if (this._isTeamEliminated(team, nowMs)) {
+        } else if (this._isTeamEliminated(team)) {
             this._label.text = `${formatTeam(team, showFlags)} was eliminated`;
             this._addStatusItem('Team was eliminated');
         } else if (!match) {
