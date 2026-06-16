@@ -5,7 +5,7 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Pango from 'gi://Pango';
-import Soup from 'gi://Soup?version=3.0';
+import Soup from 'gi://Soup';
 import St from 'gi://St';
 
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
@@ -24,8 +24,7 @@ const UPDATE_INTERVAL_SECONDS = 6 * 60 * 60;
 const MINUTE_MS = 60 * 1000;
 const HOUR_MS = 60 * MINUTE_MS;
 
-// How long a match keeps showing as LIVE after kickoff. Knockout matches can
-// run into extra time and penalties, so they get a longer window.
+// How long a match keeps showing as LIVE after kickoff. (since no API to pull when a match is done)
 const GROUP_DISPLAY_DURATION_MS = 2 * HOUR_MS;
 const KNOCKOUT_DISPLAY_DURATION_MS = 2.5 * HOUR_MS;
 
@@ -108,18 +107,39 @@ function cachePath(extension) {
 }
 
 async function readTextFile(file) {
-    const [contents] = await file.load_contents_async(null);
+    const contents = await new Promise((resolve, reject) => {
+        file.load_contents_async(null, (source, result) => {
+            try {
+                const [, bytes] = source.load_contents_finish(result);
+                resolve(bytes);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    });
+
     return new TextDecoder().decode(contents);
 }
 
 async function writeTextFile(file, text) {
     const bytes = new GLib.Bytes(new TextEncoder().encode(text));
-    await file.replace_contents_bytes_async(
-        bytes,
-        null,
-        false,
-        Gio.FileCreateFlags.REPLACE_DESTINATION,
-        null);
+
+    await new Promise((resolve, reject) => {
+        file.replace_contents_bytes_async(
+            bytes,
+            null,
+            false,
+            Gio.FileCreateFlags.REPLACE_DESTINATION,
+            null,
+            (source, result) => {
+                try {
+                    source.replace_contents_finish(result);
+                    resolve();
+                } catch (error) {
+                    reject(error);
+                }
+            });
+    });
 }
 
 function normalizeSchedule(schedule, sourceLabel) {
@@ -352,14 +372,12 @@ class NextMatchIndicator extends PanelMenu.Button {
         this._timeoutId = 0;
         this._updating = false;
         this._lastUpdateError = '';
-        this._settingsChangedIds = [
-            this._settings.connect(
-                `changed::${SELECTED_TEAM_KEY}`,
-                () => this._refresh()),
-            this._settings.connect(
-                `changed::${SHOW_FLAGS_KEY}`,
-                () => this._refresh()),
-        ];
+        this._settings.connectObject(
+            `changed::${SELECTED_TEAM_KEY}`,
+            () => this._refresh(),
+            `changed::${SHOW_FLAGS_KEY}`,
+            () => this._refresh(),
+            this);
 
         this._label = new St.Label({
             text: 'World Cup',
@@ -374,9 +392,7 @@ class NextMatchIndicator extends PanelMenu.Button {
 
     destroy() {
         this._clearTimeout();
-
-        this._settingsChangedIds.forEach(id => this._settings.disconnect(id));
-        this._settingsChangedIds = [];
+        this._settings.disconnectObject(this);
 
         super.destroy();
     }
@@ -522,12 +538,18 @@ class NextMatchIndicator extends PanelMenu.Button {
 
         const refreshItem =
             new PopupMenu.PopupImageMenuItem('Refresh schedule', 'view-refresh-symbolic');
-        refreshItem.connect('activate', () => this._extension.refreshSchedule(true));
+        refreshItem.connectObject(
+            'activate',
+            () => this._extension.refreshSchedule(true),
+            this);
         this.menu.addMenuItem(refreshItem);
 
         const preferencesItem =
             new PopupMenu.PopupImageMenuItem('Preferences', 'emblem-system-symbolic');
-        preferencesItem.connect('activate', () => this._extension.openPreferences());
+        preferencesItem.connectObject(
+            'activate',
+            () => this._extension.openPreferences(),
+            this);
         this.menu.addMenuItem(preferencesItem);
     }
 
@@ -576,7 +598,6 @@ export default class WorldCupNextMatchExtension extends Extension {
         this._settings = this.getSettings();
         this._session = null;
         this._updateTimeoutId = 0;
-        this._settingsChangedIds = [];
         this._bundledSchedule = null;
         this._remoteSchedule = null;
         this._schedule = null;
@@ -584,20 +605,20 @@ export default class WorldCupNextMatchExtension extends Extension {
         this._indicator = new NextMatchIndicator(this, this._schedule);
         Main.panel.addToStatusArea(INDICATOR_NAME, this._indicator);
 
-        this._settingsChangedIds.push(this._settings.connect(
+        this._settings.connectObject(
             `changed::${AUTO_UPDATE_KEY}`,
             () => {
                 this._scheduleUpdateTimer();
 
                 if (this._settings.get_boolean(AUTO_UPDATE_KEY))
                     this.refreshSchedule(true);
-            }));
-        this._settingsChangedIds.push(this._settings.connect(
+            },
             `changed::${SCHEDULE_URL_KEY}`,
             () => {
                 this.refreshSchedule(true);
                 this._scheduleUpdateTimer();
-            }));
+            },
+            this);
 
         this._loadSchedules();
     }
@@ -608,8 +629,7 @@ export default class WorldCupNextMatchExtension extends Extension {
         this._session?.abort();
         this._session = null;
 
-        this._settingsChangedIds.forEach(id => this._settings.disconnect(id));
-        this._settingsChangedIds = [];
+        this._settings.disconnectObject(this);
 
         this._indicator?.destroy();
         this._indicator = null;

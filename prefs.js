@@ -11,24 +11,46 @@ const SHOW_FLAGS_KEY = 'show-flags';
 const AUTO_UPDATE_KEY = 'auto-update';
 const SCHEDULE_URL_KEY = 'schedule-url';
 
-function decodeFile(file) {
-    const [ok, contents] = file.load_contents(null);
-    if (!ok)
-        throw new Error(`Unable to load ${file.get_path()}`);
+async function readTextFile(file) {
+    const contents = await new Promise((resolve, reject) => {
+        file.load_contents_async(null, (source, result) => {
+            try {
+                const [, bytes] = source.load_contents_finish(result);
+                resolve(bytes);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    });
 
     return new TextDecoder().decode(contents);
 }
 
-function loadTeams(extension) {
+async function loadTeams(extension) {
     const file = Gio.File.new_for_path(`${extension.path}/data/matches.json`);
-    const schedule = JSON.parse(decodeFile(file));
+    const schedule = JSON.parse(await readTextFile(file));
     return schedule.teams;
 }
 
 export default class WorldCupNextMatchPreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
+        this._fillPreferencesWindow(window).catch(error => {
+            const page = new Adw.PreferencesPage({
+                title: 'World Cup',
+                icon_name: 'dialog-error-symbolic',
+            });
+            const group = new Adw.PreferencesGroup({
+                title: 'Schedule could not be loaded',
+                description: error.message,
+            });
+            page.add(group);
+            window.add(page);
+        });
+    }
+
+    async _fillPreferencesWindow(window) {
         const settings = this.getSettings();
-        const teams = loadTeams(this);
+        const teams = await loadTeams(this);
         const teamNames = ['Choose a team', ...teams];
         const model = Gtk.StringList.new(teamNames);
 
@@ -54,12 +76,15 @@ export default class WorldCupNextMatchPreferences extends ExtensionPreferences {
         const selectedIndex = teams.indexOf(selectedTeam);
         row.selected = selectedIndex >= 0 ? selectedIndex + 1 : 0;
 
-        row.connect('notify::selected', () => {
-            const selected = row.selected;
-            settings.set_string(
-                SELECTED_TEAM_KEY,
-                selected > 0 ? teams[selected - 1] : '');
-        });
+        row.connectObject(
+            'notify::selected',
+            () => {
+                const selected = row.selected;
+                settings.set_string(
+                    SELECTED_TEAM_KEY,
+                    selected > 0 ? teams[selected - 1] : '');
+            },
+            window);
 
         const flagsRow = new Adw.SwitchRow({
             title: 'Show flags',
