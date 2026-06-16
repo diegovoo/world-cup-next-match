@@ -23,6 +23,7 @@ const LAST_UPDATE_CHECK_KEY = 'last-update-check';
 const UPDATE_INTERVAL_SECONDS = 6 * 60 * 60;
 const MINUTE_MS = 60 * 1000;
 const HOUR_MS = 60 * MINUTE_MS;
+const DAY_MS = 24 * HOUR_MS;
 
 // How long a match keeps showing as LIVE after kickoff. (since no API to pull when match is done)
 const MATCH_DISPLAY_DURATION_MS = 2.5 * HOUR_MS;
@@ -31,9 +32,7 @@ const STAGE_LABELS = {
     group: 'Group stage',
     'round-of-32': 'Round of 32',
     'round-of-16': 'Round of 16',
-    quarterfinal: 'Quarter-final',
     quarterfinals: 'Quarter-finals',
-    semifinal: 'Semi-final',
     semifinals: 'Semi-finals',
     'third-place': 'Third-place match',
     final: 'Final',
@@ -134,7 +133,7 @@ async function writeTextFile(file, text) {
     });
 }
 
-function normalizeSchedule(schedule, sourceLabel) {
+function normalizeSchedule(schedule) {
     if (!schedule || !Array.isArray(schedule.matches))
         throw new Error('Schedule must include a matches array');
 
@@ -152,7 +151,6 @@ function normalizeSchedule(schedule, sourceLabel) {
             group: match.group ?? '',
             home: match.home,
             away: match.away,
-            kickoff: match.kickoff ?? match.kickoffUtc,
             kickoffUtc: match.kickoffUtc,
             kickoffMs,
             venue: match.venue ?? '',
@@ -173,8 +171,6 @@ function normalizeSchedule(schedule, sourceLabel) {
     )).sort();
 
     return {
-        source: schedule.source ?? sourceLabel,
-        updatedAt: schedule.updatedAt ?? '',
         eliminatedTeams,
         teams,
         matches,
@@ -184,14 +180,14 @@ function normalizeSchedule(schedule, sourceLabel) {
 async function loadBundledSchedule(extension) {
     const file = extension.dir.get_child('data').get_child('matches.json');
     const text = await readTextFile(file);
-    return normalizeSchedule(JSON.parse(text), 'bundled schedule');
+    return normalizeSchedule(JSON.parse(text));
 }
 
 async function loadCachedSchedule(extension) {
     const file = Gio.File.new_for_path(cachePath(extension));
     try {
         const text = await readTextFile(file);
-        return normalizeSchedule(JSON.parse(text), 'cached remote schedule');
+        return normalizeSchedule(JSON.parse(text));
     } catch (error) {
         if (error.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND))
             return null;
@@ -216,15 +212,13 @@ function mergeSchedules(bundledSchedule, remoteSchedule) {
     remoteSchedule.matches.forEach(match => byId.set(`${match.id}`, match));
 
     return normalizeSchedule({
-        source: remoteSchedule.source || bundledSchedule.source,
-        updatedAt: remoteSchedule.updatedAt,
         eliminatedTeams: [
             ...bundledSchedule.eliminatedTeams,
             ...remoteSchedule.eliminatedTeams,
         ],
         teams: [...bundledSchedule.teams, ...remoteSchedule.teams],
         matches: Array.from(byId.values()),
-    }, 'merged schedule');
+    });
 }
 
 function regionalIndicatorFlag(countryCode) {
@@ -256,13 +250,16 @@ function flagForTeam(team) {
     return regionalIndicatorFlag(code);
 }
 
-function formatTeam(team, showFlags) {
+function formatTeam(team, showFlags, flagFirst = false) {
     const flag = showFlags ? flagForTeam(team) : '';
-    return flag ? `${team} ${flag}` : team;
+    if (!flag)
+        return team;
+
+    return flagFirst ? `${team} ${flag}` : `${flag} ${team}`;
 }
 
 function formatFixture(match, showFlags) {
-    return `${formatTeam(match.home, showFlags)} vs ${formatTeam(match.away, showFlags)}`;
+    return formatTeam(match.home, showFlags, true) + " vs " + formatTeam(match.away, showFlags);
 }
 
 function isMatchLive(match, nowMs) {
@@ -276,19 +273,13 @@ function formatMatchState(match, nowMs) {
 
     const msUntilKickoff = match.kickoffMs - nowMs;
 
-    if (msUntilKickoff >= HOUR_MS) {
-        const totalHours = Math.max(1, Math.floor(msUntilKickoff / HOUR_MS));
-        const days = Math.floor(totalHours / 24);
-        const hours = totalHours % 24;
+    if (msUntilKickoff < HOUR_MS)
+        return `in ${Math.max(1, Math.floor(msUntilKickoff / MINUTE_MS))}m`;
 
-        if (days > 0)
-            return hours > 0 ? `in ${days}d ${hours}h` : `in ${days}d`;
+    if (msUntilKickoff < DAY_MS)
+        return `in ${Math.floor(msUntilKickoff / HOUR_MS)}h`;
 
-        return `in ${totalHours}h`;
-    }
-
-    const minutes = Math.max(1, Math.ceil(msUntilKickoff / MINUTE_MS));
-    return `in ${minutes}m`;
+    return `in ${Math.floor(msUntilKickoff / DAY_MS)}d`;
 }
 
 function formatLocalKickoff(match) {
@@ -317,11 +308,13 @@ function secondsUntilNextRefresh(match, nowMs) {
         return 0;
 
     const msUntilKickoff = match.kickoffMs - nowMs;
+    if (msUntilKickoff <= 0)
+        return 30 * 60;
 
-    if (msUntilKickoff > 0 && msUntilKickoff <= HOUR_MS)
-        return 60;
-
-    return 30 * 60;
+    const unitMs = msUntilKickoff < HOUR_MS ? MINUTE_MS
+        : msUntilKickoff < DAY_MS ? HOUR_MS
+        : DAY_MS;
+    return Math.max(1, Math.ceil((msUntilKickoff % unitMs || unitMs) / 1000));
 }
 
 const NextMatchIndicator = GObject.registerClass(
@@ -380,10 +373,7 @@ class NextMatchIndicator extends PanelMenu.Button {
     }
 
     _findVisibleMatch(team, nowMs) {
-        if (!this._schedule)
-            return null;
-
-        if (!team)
+        if (!this._schedule || !team)
             return null;
 
         return this._schedule.matches.find(match => {
@@ -465,23 +455,12 @@ class NextMatchIndicator extends PanelMenu.Button {
     }
 
     _addMatchItems(match, matchState, showFlags) {
-        const title = new PopupMenu.PopupMenuItem(`${formatFixture(match, showFlags)} ${matchState}`);
-        title.setSensitive(false);
-        this.menu.addMenuItem(title);
+        this._addStatusItem(`${formatFixture(match, showFlags)} ${matchState}`);
+        this._addStatusItem(formatStage(match));
+        this._addStatusItem(formatLocalKickoff(match));
 
-        const stage = new PopupMenu.PopupMenuItem(formatStage(match));
-        stage.setSensitive(false);
-        this.menu.addMenuItem(stage);
-
-        const kickoff = new PopupMenu.PopupMenuItem(formatLocalKickoff(match));
-        kickoff.setSensitive(false);
-        this.menu.addMenuItem(kickoff);
-
-        if (match.venue) {
-            const venue = new PopupMenu.PopupMenuItem(match.venue);
-            venue.setSensitive(false);
-            this.menu.addMenuItem(venue);
-        }
+        if (match.venue)
+            this._addStatusItem(match.venue);
     }
 
     _addScheduleStatus() {
@@ -492,9 +471,7 @@ class NextMatchIndicator extends PanelMenu.Button {
             : this._lastUpdateError || (this._schedule
                 ? `Schedule: ${this._schedule.matches.length} matches`
                 : 'Schedule not loaded');
-        const status = new PopupMenu.PopupMenuItem(statusText);
-        status.setSensitive(false);
-        this.menu.addMenuItem(status);
+        this._addStatusItem(statusText);
     }
 });
 
@@ -648,7 +625,7 @@ export default class WorldCupNextMatchExtension extends Extension {
                         throw new Error(`HTTP ${message.status_code}`);
 
                     const text = new TextDecoder().decode(bytes.get_data());
-                    const remoteSchedule = normalizeSchedule(JSON.parse(text), 'remote schedule');
+                    const remoteSchedule = normalizeSchedule(JSON.parse(text));
                     await saveCachedSchedule(this, remoteSchedule);
 
                     this._remoteSchedule = remoteSchedule;
