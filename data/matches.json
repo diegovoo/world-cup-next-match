@@ -1,6 +1,13 @@
 {
-  "source": "Wikipedia 2026 FIFA World Cup group pages, fetched 2026-06-11; fixtures cite FIFA match schedule",
-  "eliminatedTeams": [],
+  "source": "FIFA public API, fetched 2026-06-26T09:18:26.544Z; venue names preserved from prior schedule where available",
+  "eliminatedTeams": [
+    "Curacao",
+    "Czechia",
+    "Haiti",
+    "Qatar",
+    "Tunisia",
+    "Turkiye"
+  ],
   "teams": [
     "Algeria",
     "Argentina",
@@ -54,651 +61,611 @@
   "matches": [
     {
       "id": 1,
-      "group": "A",
       "home": "Mexico",
       "away": "South Africa",
-      "kickoff": "2026-06-11T13:00:00-06:00",
       "kickoffUtc": "2026-06-11T19:00:00Z",
-      "venue": "Estadio Azteca, Mexico City"
+      "venue": "Estadio Azteca, Mexico City",
+      "group": "A"
     },
     {
       "id": 2,
-      "group": "A",
       "home": "South Korea",
       "away": "Czechia",
-      "kickoff": "2026-06-11T20:00:00-06:00",
       "kickoffUtc": "2026-06-12T02:00:00Z",
-      "venue": "Estadio Akron, Zapopan"
+      "venue": "Estadio Akron, Zapopan",
+      "group": "A"
     },
     {
       "id": 3,
-      "group": "B",
       "home": "Canada",
       "away": "Bosnia and Herzegovina",
-      "kickoff": "2026-06-12T15:00:00-04:00",
       "kickoffUtc": "2026-06-12T19:00:00Z",
-      "venue": "BMO Field, Toronto"
+      "venue": "BMO Field, Toronto",
+      "group": "B"
     },
     {
       "id": 4,
-      "group": "D",
       "home": "United States",
       "away": "Paraguay",
-      "kickoff": "2026-06-12T18:00:00-07:00",
       "kickoffUtc": "2026-06-13T01:00:00Z",
-      "venue": "SoFi Stadium, Inglewood"
+      "venue": "SoFi Stadium, Inglewood",
+      "group": "D"
     },
     {
       "id": 8,
-      "group": "B",
       "home": "Qatar",
       "away": "Switzerland",
-      "kickoff": "2026-06-13T12:00:00-07:00",
       "kickoffUtc": "2026-06-13T19:00:00Z",
-      "venue": "Levi's Stadium, Santa Clara"
+      "venue": "Levi's Stadium, Santa Clara",
+      "group": "B"
     },
     {
       "id": 7,
-      "group": "C",
       "home": "Brazil",
       "away": "Morocco",
-      "kickoff": "2026-06-13T18:00:00-04:00",
       "kickoffUtc": "2026-06-13T22:00:00Z",
-      "venue": "MetLife Stadium, East Rutherford"
+      "venue": "MetLife Stadium, East Rutherford",
+      "group": "C"
     },
     {
       "id": 5,
-      "group": "C",
       "home": "Haiti",
       "away": "Scotland",
-      "kickoff": "2026-06-13T21:00:00-04:00",
       "kickoffUtc": "2026-06-14T01:00:00Z",
-      "venue": "Gillette Stadium, Foxborough"
+      "venue": "Gillette Stadium, Foxborough",
+      "group": "C"
     },
     {
       "id": 6,
-      "group": "D",
       "home": "Australia",
       "away": "Turkiye",
-      "kickoff": "2026-06-13T21:00:00-07:00",
       "kickoffUtc": "2026-06-14T04:00:00Z",
-      "venue": "BC Place, Vancouver"
+      "venue": "BC Place, Vancouver",
+      "group": "D"
     },
     {
       "id": 10,
-      "group": "E",
       "home": "Germany",
       "away": "Curacao",
-      "kickoff": "2026-06-14T12:00:00-05:00",
       "kickoffUtc": "2026-06-14T17:00:00Z",
-      "venue": "NRG Stadium, Houston"
+      "venue": "NRG Stadium, Houston",
+      "group": "E"
     },
     {
       "id": 11,
-      "group": "F",
       "home": "Netherlands",
       "away": "Japan",
-      "kickoff": "2026-06-14T15:00:00-05:00",
       "kickoffUtc": "2026-06-14T20:00:00Z",
-      "venue": "AT&T Stadium, Arlington"
+      "venue": "AT&T Stadium, Arlington",
+      "group": "F"
     },
     {
       "id": 9,
-      "group": "E",
       "home": "Cote d'Ivoire",
       "away": "Ecuador",
-      "kickoff": "2026-06-14T19:00:00-04:00",
       "kickoffUtc": "2026-06-14T23:00:00Z",
-      "venue": "Lincoln Financial Field, Philadelphia"
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "group": "E"
     },
     {
       "id": 12,
-      "group": "F",
       "home": "Sweden",
       "away": "Tunisia",
-      "kickoff": "2026-06-14T20:00:00-06:00",
       "kickoffUtc": "2026-06-15T02:00:00Z",
-      "venue": "Estadio BBVA, Guadalupe"
+      "venue": "Estadio BBVA, Guadalupe",
+      "group": "F"
     },
     {
       "id": 14,
-      "group": "H",
       "home": "Spain",
       "away": "Cabo Verde",
-      "kickoff": "2026-06-15T12:00:00-04:00",
       "kickoffUtc": "2026-06-15T16:00:00Z",
-      "venue": "Mercedes-Benz Stadium, Atlanta"
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "group": "H"
     },
     {
       "id": 16,
-      "group": "G",
       "home": "Belgium",
       "away": "Egypt",
-      "kickoff": "2026-06-15T12:00:00-07:00",
       "kickoffUtc": "2026-06-15T19:00:00Z",
-      "venue": "Lumen Field, Seattle"
+      "venue": "Lumen Field, Seattle",
+      "group": "G"
     },
     {
       "id": 13,
-      "group": "H",
       "home": "Saudi Arabia",
       "away": "Uruguay",
-      "kickoff": "2026-06-15T18:00:00-04:00",
       "kickoffUtc": "2026-06-15T22:00:00Z",
-      "venue": "Hard Rock Stadium, Miami Gardens"
+      "venue": "Hard Rock Stadium, Miami Gardens",
+      "group": "H"
     },
     {
       "id": 15,
-      "group": "G",
       "home": "Iran",
       "away": "New Zealand",
-      "kickoff": "2026-06-15T18:00:00-07:00",
       "kickoffUtc": "2026-06-16T01:00:00Z",
-      "venue": "SoFi Stadium, Inglewood"
+      "venue": "SoFi Stadium, Inglewood",
+      "group": "G"
     },
     {
       "id": 17,
-      "group": "I",
       "home": "France",
       "away": "Senegal",
-      "kickoff": "2026-06-16T15:00:00-04:00",
       "kickoffUtc": "2026-06-16T19:00:00Z",
-      "venue": "MetLife Stadium, East Rutherford"
+      "venue": "MetLife Stadium, East Rutherford",
+      "group": "I"
     },
     {
       "id": 18,
-      "group": "I",
       "home": "Iraq",
       "away": "Norway",
-      "kickoff": "2026-06-16T18:00:00-04:00",
       "kickoffUtc": "2026-06-16T22:00:00Z",
-      "venue": "Gillette Stadium, Foxborough"
+      "venue": "Gillette Stadium, Foxborough",
+      "group": "I"
     },
     {
       "id": 19,
-      "group": "J",
       "home": "Argentina",
       "away": "Algeria",
-      "kickoff": "2026-06-16T20:00:00-05:00",
       "kickoffUtc": "2026-06-17T01:00:00Z",
-      "venue": "Arrowhead Stadium, Kansas City"
+      "venue": "Arrowhead Stadium, Kansas City",
+      "group": "J"
     },
     {
       "id": 20,
-      "group": "J",
       "home": "Austria",
       "away": "Jordan",
-      "kickoff": "2026-06-16T21:00:00-07:00",
       "kickoffUtc": "2026-06-17T04:00:00Z",
-      "venue": "Levi's Stadium, Santa Clara"
+      "venue": "Levi's Stadium, Santa Clara",
+      "group": "J"
     },
     {
       "id": 23,
-      "group": "K",
       "home": "Portugal",
       "away": "DR Congo",
-      "kickoff": "2026-06-17T12:00:00-05:00",
       "kickoffUtc": "2026-06-17T17:00:00Z",
-      "venue": "NRG Stadium, Houston"
+      "venue": "NRG Stadium, Houston",
+      "group": "K"
     },
     {
       "id": 22,
-      "group": "L",
       "home": "England",
       "away": "Croatia",
-      "kickoff": "2026-06-17T15:00:00-05:00",
       "kickoffUtc": "2026-06-17T20:00:00Z",
-      "venue": "AT&T Stadium, Arlington"
+      "venue": "AT&T Stadium, Arlington",
+      "group": "L"
     },
     {
       "id": 21,
-      "group": "L",
       "home": "Ghana",
       "away": "Panama",
-      "kickoff": "2026-06-17T19:00:00-04:00",
       "kickoffUtc": "2026-06-17T23:00:00Z",
-      "venue": "BMO Field, Toronto"
+      "venue": "BMO Field, Toronto",
+      "group": "L"
     },
     {
       "id": 24,
-      "group": "K",
       "home": "Uzbekistan",
       "away": "Colombia",
-      "kickoff": "2026-06-17T20:00:00-06:00",
       "kickoffUtc": "2026-06-18T02:00:00Z",
-      "venue": "Estadio Azteca, Mexico City"
+      "venue": "Estadio Azteca, Mexico City",
+      "group": "K"
     },
     {
       "id": 25,
-      "group": "A",
       "home": "Czechia",
       "away": "South Africa",
-      "kickoff": "2026-06-18T12:00:00-04:00",
       "kickoffUtc": "2026-06-18T16:00:00Z",
-      "venue": "Mercedes-Benz Stadium, Atlanta"
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "group": "A"
     },
     {
       "id": 26,
-      "group": "B",
       "home": "Switzerland",
       "away": "Bosnia and Herzegovina",
-      "kickoff": "2026-06-18T12:00:00-07:00",
       "kickoffUtc": "2026-06-18T19:00:00Z",
-      "venue": "SoFi Stadium, Inglewood"
+      "venue": "SoFi Stadium, Inglewood",
+      "group": "B"
     },
     {
       "id": 27,
-      "group": "B",
       "home": "Canada",
       "away": "Qatar",
-      "kickoff": "2026-06-18T15:00:00-07:00",
       "kickoffUtc": "2026-06-18T22:00:00Z",
-      "venue": "BC Place, Vancouver"
+      "venue": "BC Place, Vancouver",
+      "group": "B"
     },
     {
       "id": 28,
-      "group": "A",
       "home": "Mexico",
       "away": "South Korea",
-      "kickoff": "2026-06-18T19:00:00-06:00",
       "kickoffUtc": "2026-06-19T01:00:00Z",
-      "venue": "Estadio Akron, Zapopan"
+      "venue": "Estadio Akron, Zapopan",
+      "group": "A"
     },
     {
       "id": 32,
-      "group": "D",
       "home": "United States",
       "away": "Australia",
-      "kickoff": "2026-06-19T12:00:00-07:00",
       "kickoffUtc": "2026-06-19T19:00:00Z",
-      "venue": "Lumen Field, Seattle"
+      "venue": "Lumen Field, Seattle",
+      "group": "D"
     },
     {
       "id": 30,
-      "group": "C",
       "home": "Scotland",
       "away": "Morocco",
-      "kickoff": "2026-06-19T18:00:00-04:00",
       "kickoffUtc": "2026-06-19T22:00:00Z",
-      "venue": "Gillette Stadium, Foxborough"
+      "venue": "Gillette Stadium, Foxborough",
+      "group": "C"
     },
     {
       "id": 29,
-      "group": "C",
       "home": "Brazil",
       "away": "Haiti",
-      "kickoff": "2026-06-19T20:30:00-04:00",
       "kickoffUtc": "2026-06-20T00:30:00Z",
-      "venue": "Lincoln Financial Field, Philadelphia"
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "group": "C"
     },
     {
       "id": 31,
-      "group": "D",
       "home": "Turkiye",
       "away": "Paraguay",
-      "kickoff": "2026-06-19T20:00:00-07:00",
       "kickoffUtc": "2026-06-20T03:00:00Z",
-      "venue": "Levi's Stadium, Santa Clara"
+      "venue": "Levi's Stadium, Santa Clara",
+      "group": "D"
     },
     {
       "id": 35,
-      "group": "F",
       "home": "Netherlands",
       "away": "Sweden",
-      "kickoff": "2026-06-20T12:00:00-05:00",
       "kickoffUtc": "2026-06-20T17:00:00Z",
-      "venue": "NRG Stadium, Houston"
+      "venue": "NRG Stadium, Houston",
+      "group": "F"
     },
     {
       "id": 33,
-      "group": "E",
       "home": "Germany",
       "away": "Cote d'Ivoire",
-      "kickoff": "2026-06-20T16:00:00-04:00",
       "kickoffUtc": "2026-06-20T20:00:00Z",
-      "venue": "BMO Field, Toronto"
+      "venue": "BMO Field, Toronto",
+      "group": "E"
     },
     {
       "id": 34,
-      "group": "E",
       "home": "Ecuador",
       "away": "Curacao",
-      "kickoff": "2026-06-20T19:00:00-05:00",
       "kickoffUtc": "2026-06-21T00:00:00Z",
-      "venue": "Arrowhead Stadium, Kansas City"
+      "venue": "Arrowhead Stadium, Kansas City",
+      "group": "E"
     },
     {
       "id": 36,
-      "group": "F",
       "home": "Tunisia",
       "away": "Japan",
-      "kickoff": "2026-06-20T22:00:00-06:00",
       "kickoffUtc": "2026-06-21T04:00:00Z",
-      "venue": "Estadio BBVA, Guadalupe"
+      "venue": "Estadio BBVA, Guadalupe",
+      "group": "F"
     },
     {
       "id": 38,
-      "group": "H",
       "home": "Spain",
       "away": "Saudi Arabia",
-      "kickoff": "2026-06-21T12:00:00-04:00",
       "kickoffUtc": "2026-06-21T16:00:00Z",
-      "venue": "Mercedes-Benz Stadium, Atlanta"
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "group": "H"
     },
     {
       "id": 39,
-      "group": "G",
       "home": "Belgium",
       "away": "Iran",
-      "kickoff": "2026-06-21T12:00:00-07:00",
       "kickoffUtc": "2026-06-21T19:00:00Z",
-      "venue": "SoFi Stadium, Inglewood"
+      "venue": "SoFi Stadium, Inglewood",
+      "group": "G"
     },
     {
       "id": 37,
-      "group": "H",
       "home": "Uruguay",
       "away": "Cabo Verde",
-      "kickoff": "2026-06-21T18:00:00-04:00",
       "kickoffUtc": "2026-06-21T22:00:00Z",
-      "venue": "Hard Rock Stadium, Miami Gardens"
+      "venue": "Hard Rock Stadium, Miami Gardens",
+      "group": "H"
     },
     {
       "id": 40,
-      "group": "G",
       "home": "New Zealand",
       "away": "Egypt",
-      "kickoff": "2026-06-21T18:00:00-07:00",
       "kickoffUtc": "2026-06-22T01:00:00Z",
-      "venue": "BC Place, Vancouver"
+      "venue": "BC Place, Vancouver",
+      "group": "G"
     },
     {
       "id": 43,
-      "group": "J",
       "home": "Argentina",
       "away": "Austria",
-      "kickoff": "2026-06-22T12:00:00-05:00",
       "kickoffUtc": "2026-06-22T17:00:00Z",
-      "venue": "AT&T Stadium, Arlington"
+      "venue": "AT&T Stadium, Arlington",
+      "group": "J"
     },
     {
       "id": 42,
-      "group": "I",
       "home": "France",
       "away": "Iraq",
-      "kickoff": "2026-06-22T17:00:00-04:00",
       "kickoffUtc": "2026-06-22T21:00:00Z",
-      "venue": "Lincoln Financial Field, Philadelphia"
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "group": "I"
     },
     {
       "id": 41,
-      "group": "I",
       "home": "Norway",
       "away": "Senegal",
-      "kickoff": "2026-06-22T20:00:00-04:00",
       "kickoffUtc": "2026-06-23T00:00:00Z",
-      "venue": "MetLife Stadium, East Rutherford"
+      "venue": "MetLife Stadium, East Rutherford",
+      "group": "I"
     },
     {
       "id": 44,
-      "group": "J",
       "home": "Jordan",
       "away": "Algeria",
-      "kickoff": "2026-06-22T20:00:00-07:00",
       "kickoffUtc": "2026-06-23T03:00:00Z",
-      "venue": "Levi's Stadium, Santa Clara"
+      "venue": "Levi's Stadium, Santa Clara",
+      "group": "J"
     },
     {
       "id": 47,
-      "group": "K",
       "home": "Portugal",
       "away": "Uzbekistan",
-      "kickoff": "2026-06-23T12:00:00-05:00",
       "kickoffUtc": "2026-06-23T17:00:00Z",
-      "venue": "NRG Stadium, Houston"
+      "venue": "NRG Stadium, Houston",
+      "group": "K"
     },
     {
       "id": 45,
-      "group": "L",
       "home": "England",
       "away": "Ghana",
-      "kickoff": "2026-06-23T16:00:00-04:00",
       "kickoffUtc": "2026-06-23T20:00:00Z",
-      "venue": "Gillette Stadium, Foxborough"
+      "venue": "Gillette Stadium, Foxborough",
+      "group": "L"
     },
     {
       "id": 46,
-      "group": "L",
       "home": "Panama",
       "away": "Croatia",
-      "kickoff": "2026-06-23T19:00:00-04:00",
       "kickoffUtc": "2026-06-23T23:00:00Z",
-      "venue": "BMO Field, Toronto"
+      "venue": "BMO Field, Toronto",
+      "group": "L"
     },
     {
       "id": 48,
-      "group": "K",
       "home": "Colombia",
       "away": "DR Congo",
-      "kickoff": "2026-06-23T20:00:00-06:00",
       "kickoffUtc": "2026-06-24T02:00:00Z",
-      "venue": "Estadio Akron, Zapopan"
+      "venue": "Estadio Akron, Zapopan",
+      "group": "K"
     },
     {
       "id": 51,
-      "group": "B",
       "home": "Switzerland",
       "away": "Canada",
-      "kickoff": "2026-06-24T12:00:00-07:00",
       "kickoffUtc": "2026-06-24T19:00:00Z",
-      "venue": "BC Place, Vancouver"
+      "venue": "BC Place, Vancouver",
+      "group": "B"
     },
     {
       "id": 52,
-      "group": "B",
       "home": "Bosnia and Herzegovina",
       "away": "Qatar",
-      "kickoff": "2026-06-24T12:00:00-07:00",
       "kickoffUtc": "2026-06-24T19:00:00Z",
-      "venue": "Lumen Field, Seattle"
+      "venue": "Lumen Field, Seattle",
+      "group": "B"
     },
     {
       "id": 49,
-      "group": "C",
       "home": "Scotland",
       "away": "Brazil",
-      "kickoff": "2026-06-24T18:00:00-04:00",
       "kickoffUtc": "2026-06-24T22:00:00Z",
-      "venue": "Hard Rock Stadium, Miami Gardens"
+      "venue": "Hard Rock Stadium, Miami Gardens",
+      "group": "C"
     },
     {
       "id": 50,
-      "group": "C",
       "home": "Morocco",
       "away": "Haiti",
-      "kickoff": "2026-06-24T18:00:00-04:00",
       "kickoffUtc": "2026-06-24T22:00:00Z",
-      "venue": "Mercedes-Benz Stadium, Atlanta"
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "group": "C"
     },
     {
       "id": 53,
-      "group": "A",
       "home": "Czechia",
       "away": "Mexico",
-      "kickoff": "2026-06-24T19:00:00-06:00",
       "kickoffUtc": "2026-06-25T01:00:00Z",
-      "venue": "Estadio Azteca, Mexico City"
+      "venue": "Estadio Azteca, Mexico City",
+      "group": "A"
     },
     {
       "id": 54,
-      "group": "A",
       "home": "South Africa",
       "away": "South Korea",
-      "kickoff": "2026-06-24T19:00:00-06:00",
       "kickoffUtc": "2026-06-25T01:00:00Z",
-      "venue": "Estadio BBVA, Guadalupe"
+      "venue": "Estadio BBVA, Guadalupe",
+      "group": "A"
     },
     {
       "id": 55,
-      "group": "E",
       "home": "Curacao",
       "away": "Cote d'Ivoire",
-      "kickoff": "2026-06-25T16:00:00-04:00",
       "kickoffUtc": "2026-06-25T20:00:00Z",
-      "venue": "Lincoln Financial Field, Philadelphia"
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "group": "E"
     },
     {
       "id": 56,
-      "group": "E",
       "home": "Ecuador",
       "away": "Germany",
-      "kickoff": "2026-06-25T16:00:00-04:00",
       "kickoffUtc": "2026-06-25T20:00:00Z",
-      "venue": "MetLife Stadium, East Rutherford"
+      "venue": "MetLife Stadium, East Rutherford",
+      "group": "E"
     },
     {
       "id": 57,
-      "group": "F",
       "home": "Japan",
       "away": "Sweden",
-      "kickoff": "2026-06-25T18:00:00-05:00",
       "kickoffUtc": "2026-06-25T23:00:00Z",
-      "venue": "AT&T Stadium, Arlington"
+      "venue": "AT&T Stadium, Arlington",
+      "group": "F"
     },
     {
       "id": 58,
-      "group": "F",
       "home": "Tunisia",
       "away": "Netherlands",
-      "kickoff": "2026-06-25T18:00:00-05:00",
       "kickoffUtc": "2026-06-25T23:00:00Z",
-      "venue": "Arrowhead Stadium, Kansas City"
+      "venue": "Arrowhead Stadium, Kansas City",
+      "group": "F"
     },
     {
       "id": 59,
-      "group": "D",
       "home": "Turkiye",
       "away": "United States",
-      "kickoff": "2026-06-25T19:00:00-07:00",
       "kickoffUtc": "2026-06-26T02:00:00Z",
-      "venue": "SoFi Stadium, Inglewood"
+      "venue": "SoFi Stadium, Inglewood",
+      "group": "D"
     },
     {
       "id": 60,
-      "group": "D",
       "home": "Paraguay",
       "away": "Australia",
-      "kickoff": "2026-06-25T19:00:00-07:00",
       "kickoffUtc": "2026-06-26T02:00:00Z",
-      "venue": "Levi's Stadium, Santa Clara"
+      "venue": "Levi's Stadium, Santa Clara",
+      "group": "D"
     },
     {
       "id": 61,
-      "group": "I",
       "home": "Norway",
       "away": "France",
-      "kickoff": "2026-06-26T15:00:00-04:00",
       "kickoffUtc": "2026-06-26T19:00:00Z",
-      "venue": "Gillette Stadium, Foxborough"
+      "venue": "Gillette Stadium, Foxborough",
+      "group": "I"
     },
     {
       "id": 62,
-      "group": "I",
       "home": "Senegal",
       "away": "Iraq",
-      "kickoff": "2026-06-26T15:00:00-04:00",
       "kickoffUtc": "2026-06-26T19:00:00Z",
-      "venue": "BMO Field, Toronto"
+      "venue": "BMO Field, Toronto",
+      "group": "I"
     },
     {
       "id": 65,
-      "group": "H",
       "home": "Cabo Verde",
       "away": "Saudi Arabia",
-      "kickoff": "2026-06-26T19:00:00-05:00",
       "kickoffUtc": "2026-06-27T00:00:00Z",
-      "venue": "NRG Stadium, Houston"
+      "venue": "NRG Stadium, Houston",
+      "group": "H"
     },
     {
       "id": 66,
-      "group": "H",
       "home": "Uruguay",
       "away": "Spain",
-      "kickoff": "2026-06-26T18:00:00-06:00",
       "kickoffUtc": "2026-06-27T00:00:00Z",
-      "venue": "Estadio Akron, Zapopan"
+      "venue": "Estadio Akron, Zapopan",
+      "group": "H"
     },
     {
       "id": 63,
-      "group": "G",
       "home": "Egypt",
       "away": "Iran",
-      "kickoff": "2026-06-26T20:00:00-07:00",
       "kickoffUtc": "2026-06-27T03:00:00Z",
-      "venue": "Lumen Field, Seattle"
+      "venue": "Lumen Field, Seattle",
+      "group": "G"
     },
     {
       "id": 64,
-      "group": "G",
       "home": "New Zealand",
       "away": "Belgium",
-      "kickoff": "2026-06-26T20:00:00-07:00",
       "kickoffUtc": "2026-06-27T03:00:00Z",
-      "venue": "BC Place, Vancouver"
+      "venue": "BC Place, Vancouver",
+      "group": "G"
     },
     {
       "id": 67,
-      "group": "L",
       "home": "Panama",
       "away": "England",
-      "kickoff": "2026-06-27T17:00:00-04:00",
       "kickoffUtc": "2026-06-27T21:00:00Z",
-      "venue": "MetLife Stadium, East Rutherford"
+      "venue": "MetLife Stadium, East Rutherford",
+      "group": "L"
     },
     {
       "id": 68,
-      "group": "L",
       "home": "Croatia",
       "away": "Ghana",
-      "kickoff": "2026-06-27T17:00:00-04:00",
       "kickoffUtc": "2026-06-27T21:00:00Z",
-      "venue": "Lincoln Financial Field, Philadelphia"
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "group": "L"
     },
     {
       "id": 71,
-      "group": "K",
       "home": "Colombia",
       "away": "Portugal",
-      "kickoff": "2026-06-27T19:30:00-04:00",
       "kickoffUtc": "2026-06-27T23:30:00Z",
-      "venue": "Hard Rock Stadium, Miami Gardens"
+      "venue": "Hard Rock Stadium, Miami Gardens",
+      "group": "K"
     },
     {
       "id": 72,
-      "group": "K",
       "home": "DR Congo",
       "away": "Uzbekistan",
-      "kickoff": "2026-06-27T19:30:00-04:00",
       "kickoffUtc": "2026-06-27T23:30:00Z",
-      "venue": "Mercedes-Benz Stadium, Atlanta"
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "group": "K"
     },
     {
       "id": 69,
-      "group": "J",
       "home": "Algeria",
       "away": "Austria",
-      "kickoff": "2026-06-27T21:00:00-05:00",
       "kickoffUtc": "2026-06-28T02:00:00Z",
-      "venue": "Arrowhead Stadium, Kansas City"
+      "venue": "Arrowhead Stadium, Kansas City",
+      "group": "J"
     },
     {
       "id": 70,
-      "group": "J",
       "home": "Jordan",
       "away": "Argentina",
-      "kickoff": "2026-06-27T21:00:00-05:00",
       "kickoffUtc": "2026-06-28T02:00:00Z",
-      "venue": "AT&T Stadium, Arlington"
+      "venue": "AT&T Stadium, Arlington",
+      "group": "J"
+    },
+    {
+      "id": 73,
+      "home": "South Africa",
+      "away": "Canada",
+      "kickoffUtc": "2026-06-28T19:00:00Z",
+      "venue": "SoFi Stadium, Inglewood",
+      "stage": "round-of-32"
+    },
+    {
+      "id": 76,
+      "home": "Brazil",
+      "away": "Japan",
+      "kickoffUtc": "2026-06-29T17:00:00Z",
+      "venue": "NRG Stadium, Houston",
+      "stage": "round-of-32"
+    },
+    {
+      "id": 75,
+      "home": "Netherlands",
+      "away": "Morocco",
+      "kickoffUtc": "2026-06-30T01:00:00Z",
+      "venue": "Estadio BBVA, Guadalupe",
+      "stage": "round-of-32"
+    },
+    {
+      "id": 81,
+      "home": "United States",
+      "away": "Bosnia and Herzegovina",
+      "kickoffUtc": "2026-07-02T00:00:00Z",
+      "venue": "Levi's Stadium, Santa Clara",
+      "stage": "round-of-32"
     }
   ]
 }
