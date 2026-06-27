@@ -408,8 +408,8 @@ class NextMatchIndicator extends PanelMenu.Button {
             this._label.text = `${formatTeam(team, showFlags)} was eliminated`;
             this._addStatusItem('Team was eliminated');
         } else if (!match) {
-            this._label.text = 'No scheduled match';
-            this._addStatusItem(`No remaining scheduled match for ${team}`);
+            this._label.text = `${formatTeam(team, showFlags)} vs ?`;
+            this._addStatusItem(`Waiting for opponent tbd`);
         } else {
             const matchState = formatMatchState(match, nowMs);
             this._label.text = `${formatFixture(match, showFlags)} ${matchState}`;
