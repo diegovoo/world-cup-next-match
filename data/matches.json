@@ -1,12 +1,16 @@
 {
-  "source": "FIFA public API, fetched 2026-06-26T09:18:26.544Z; venue names preserved from prior schedule where available",
+  "source": "FIFA public API, fetched 2026-06-27T12:20:32.715Z; venue names preserved from prior schedule where available",
   "eliminatedTeams": [
     "Curacao",
     "Czechia",
     "Haiti",
+    "Iraq",
+    "New Zealand",
     "Qatar",
+    "Saudi Arabia",
     "Tunisia",
-    "Turkiye"
+    "Turkiye",
+    "Uruguay"
   ],
   "teams": [
     "Algeria",
@@ -652,6 +656,14 @@
       "stage": "round-of-32"
     },
     {
+      "id": 74,
+      "home": "Germany",
+      "away": "Paraguay",
+      "kickoffUtc": "2026-06-29T20:30:00Z",
+      "venue": "Gillette Stadium, Foxborough",
+      "stage": "round-of-32"
+    },
+    {
       "id": 75,
       "home": "Netherlands",
       "away": "Morocco",
@@ -660,11 +672,43 @@
       "stage": "round-of-32"
     },
     {
+      "id": 78,
+      "home": "Cote d'Ivoire",
+      "away": "Norway",
+      "kickoffUtc": "2026-06-30T17:00:00Z",
+      "venue": "AT&T Stadium, Arlington",
+      "stage": "round-of-32"
+    },
+    {
+      "id": 77,
+      "home": "France",
+      "away": "Sweden",
+      "kickoffUtc": "2026-06-30T21:00:00Z",
+      "venue": "MetLife Stadium, East Rutherford",
+      "stage": "round-of-32"
+    },
+    {
       "id": 81,
       "home": "United States",
       "away": "Bosnia and Herzegovina",
       "kickoffUtc": "2026-07-02T00:00:00Z",
       "venue": "Levi's Stadium, Santa Clara",
+      "stage": "round-of-32"
+    },
+    {
+      "id": 88,
+      "home": "Australia",
+      "away": "Egypt",
+      "kickoffUtc": "2026-07-03T18:00:00Z",
+      "venue": "AT&T Stadium, Arlington",
+      "stage": "round-of-32"
+    },
+    {
+      "id": 86,
+      "home": "Argentina",
+      "away": "Cabo Verde",
+      "kickoffUtc": "2026-07-03T22:00:00Z",
+      "venue": "Hard Rock Stadium, Miami Gardens",
       "stage": "round-of-32"
     }
   ]
