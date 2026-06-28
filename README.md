@@ -1,15 +1,27 @@
 # World Cup Next Match
 
-A GNOME Shell extension that shows the next 2026 FIFA World Cup match for a team
-you pick, in the top bar.
+A GNOME Shell extension that shows the selected team's next 2026 FIFA World Cup
+match in the top bar.
 
-The top bar shows the fixture and a countdown, for example `Spain vs Croatia in
-2d 4h`. Minutes are shown only inside the final hour. During a match the
-countdown is replaced with `LIVE`. If the selected team is eliminated, the top
-bar says so instead.
+It shows the fixture, flags, and a countdown. If the selected team has no remaining fixture, the
+menu explains whether the team was eliminated or no match is scheduled yet.
 
-Flags are shown next to team names. If flag emoji don't render on your system,
-turn them off in Preferences.
+## Screenshots
+
+![Top bar countdown](screenshots/basic.png)
+
+![Match details menu](screenshots/clicked_on_it.png)
+
+![Preferences](screenshots/preferences.png)
+
+## Features
+
+- Pick any team from Preferences.
+- Show or hide flag emoji.
+- See match stage, local kickoff time, venue, and schedule status from the menu.
+- Refresh the remote schedule feed manually, or let the extension update it
+  automatically every few hours.
+- Fall back to the bundled schedule when the remote feed cannot be loaded.
 
 ## Install locally
 
@@ -18,50 +30,31 @@ glib-compile-schemas schemas
 gnome-extensions enable world-cup-next-match@diegovoo.github.io
 ```
 
-If a newly added local extension doesn't show up, log out and back in, or
-restart GNOME Shell on X11.
+If GNOME Shell has not seen the extension before, log out and back in.
 
-## Schedule data
+## Schedule updates
 
-The group-stage schedule is bundled and works offline. Knockout fixtures depend
-on group results, so they aren't bundled. When auto-update is on, the extension
-fetches a JSON schedule feed (at most once every six hours) and caches it. If
-the fetch fails, the bundled schedule is used.
-
-The default feed URL is:
+The extension bundles `data/matches.json` so it works offline. With automatic
+updates enabled, it also fetches this JSON feed and caches it locally:
 
 ```text
 https://raw.githubusercontent.com/diegovoo/world-cup-next-match/main/data/matches.json
 ```
 
-Publishing an updated file at that URL adds knockout matches during the
-tournament. A match with the same `id` as a bundled one replaces it; a new `id`
-is added.
+The remote feed can add newly confirmed knockout fixtures, update existing
+matches by `id`, and mark teams as eliminated. The menu's `Refresh schedule`
+action reloads that remote feed; editing the local bundled JSON only takes
+effect after the extension is reloaded.
 
-To mark a team as eliminated explicitly, list it under `eliminatedTeams`:
+To regenerate the bundled schedule from FIFA's public API:
 
-```json
-{
-  "eliminatedTeams": ["Spain"],
-  "matches": []
-}
+```sh
+node scripts/update-fifa-schedule.js
 ```
 
-A knockout match uses the same fields as a bundled match, plus a `stage`:
-
-```json
-{
-  "id": 73,
-  "stage": "round-of-32",
-  "home": "Mexico",
-  "away": "Croatia",
-  "kickoffUtc": "2026-06-28T19:00:00Z",
-  "venue": "Example Stadium"
-}
-```
-
-Recognized stage values: `round-of-32`, `round-of-16`, `quarterfinals`,
-`semifinals`, `third-place`, `final`.
+The updater writes only matches where both teams are known. Future knockout
+placeholders without confirmed teams are skipped until FIFA publishes the actual
+fixture.
 
 ## License
 
