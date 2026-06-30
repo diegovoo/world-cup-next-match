@@ -172,7 +172,20 @@ function convertMatch(match, venueByStadiumId) {
     return output;
 }
 
-function eliminatedTeamsFromStandings(standings, matches) {
+function knockoutLoser(match) {
+    const stage = STAGE_BY_FIFA_NAME[localizedText(match.StageName)] ?? '';
+    if (!stage || stage === 'group' || !match.Winner) return '';
+
+    if (String(match.Winner) === String(match.Home?.IdTeam))
+        return fifaTeamName(match.Away);
+
+    if (String(match.Winner) === String(match.Away?.IdTeam))
+        return fifaTeamName(match.Home);
+
+    return '';
+}
+
+function eliminatedTeamsFromStandings(existingSchedule, standings, fifaMatches, matches) {
     const nowMs = Date.now();
     const teamsWithVisibleMatches = new Set(
         matches
@@ -180,12 +193,13 @@ function eliminatedTeamsFromStandings(standings, matches) {
             .flatMap(match => [match.home, match.away])
     );
 
-    return Array.from(new Set(
-        standings
+    return Array.from(new Set([
+        ...(existingSchedule.eliminatedTeams ?? []),
+        ...standings
             .filter(row => row.QualificationStatus === 'Eliminated')
-            .map(row => normalizeTeamName(localizedText(row.Team?.Name)))
-            .filter(team => team && !teamsWithVisibleMatches.has(team))
-    )).sort();
+            .map(row => normalizeTeamName(localizedText(row.Team?.Name))),
+        ...fifaMatches.map(knockoutLoser),
+    ].filter(team => team && !teamsWithVisibleMatches.has(team)))).sort();
 }
 
 function validateSchedule(schedule) {
@@ -238,7 +252,7 @@ async function main() {
 
     const schedule = {
         source: `FIFA public API, fetched ${new Date().toISOString()}`,
-        eliminatedTeams: eliminatedTeamsFromStandings(standings, matches),
+        eliminatedTeams: eliminatedTeamsFromStandings(existingSchedule, standings, fifaMatches, matches),
         teams,
         matches,
     };

@@ -1,6 +1,7 @@
 {
-  "source": "FIFA public API, fetched 2026-06-30T00:08:08.105Z",
+  "source": "FIFA public API, fetched 2026-06-30T22:02:48.285Z",
   "eliminatedTeams": [
+    "Cote d'Ivoire",
     "Curacao",
     "Czechia",
     "Germany",
@@ -9,6 +10,7 @@
     "Iraq",
     "Japan",
     "Jordan",
+    "Netherlands",
     "New Zealand",
     "Panama",
     "Qatar",
@@ -775,6 +777,22 @@
       "kickoffUtc": "2026-07-04T01:30:00Z",
       "venue": "Arrowhead Stadium, Kansas City",
       "stage": "round-of-32"
+    },
+    {
+      "id": 90,
+      "home": "Canada",
+      "away": "Morocco",
+      "kickoffUtc": "2026-07-04T17:00:00Z",
+      "venue": "NRG Stadium, Houston",
+      "stage": "round-of-16"
+    },
+    {
+      "id": 91,
+      "home": "Brazil",
+      "away": "Norway",
+      "kickoffUtc": "2026-07-05T20:00:00Z",
+      "venue": "MetLife Stadium, East Rutherford",
+      "stage": "round-of-16"
     }
   ]
 }
