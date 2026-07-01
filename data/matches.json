@@ -1,9 +1,10 @@
 {
-  "source": "FIFA public API, fetched 2026-06-30T22:02:48.285Z",
+  "source": "FIFA public API, fetched 2026-07-01T10:27:22.351Z",
   "eliminatedTeams": [
     "Cote d'Ivoire",
     "Curacao",
     "Czechia",
+    "Ecuador",
     "Germany",
     "Haiti",
     "Iran",
@@ -18,7 +19,9 @@
     "Scotland",
     "South Africa",
     "South Korea",
+    "Sweden",
     "Tunisia",
+    "Turkey",
     "Turkiye",
     "Uruguay",
     "Uzbekistan"
@@ -702,7 +705,7 @@
       "id": 79,
       "home": "Mexico",
       "away": "Ecuador",
-      "kickoffUtc": "2026-07-01T01:00:00Z",
+      "kickoffUtc": "2026-07-01T02:00:00Z",
       "venue": "Estadio Azteca, Mexico City",
       "stage": "round-of-32"
     },
@@ -784,6 +787,14 @@
       "away": "Morocco",
       "kickoffUtc": "2026-07-04T17:00:00Z",
       "venue": "NRG Stadium, Houston",
+      "stage": "round-of-16"
+    },
+    {
+      "id": 89,
+      "home": "Paraguay",
+      "away": "France",
+      "kickoffUtc": "2026-07-04T21:00:00Z",
+      "venue": "Lincoln Financial Field, Philadelphia",
       "stage": "round-of-16"
     },
     {
