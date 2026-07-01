@@ -1,9 +1,10 @@
 {
-  "source": "FIFA public API, fetched 2026-07-01T17:20:13.275Z",
+  "source": "FIFA public API, fetched 2026-07-01T20:01:15.675Z",
   "eliminatedTeams": [
     "Cote d'Ivoire",
     "Curacao",
     "Czechia",
+    "DR Congo",
     "Ecuador",
     "Germany",
     "Haiti",
@@ -803,6 +804,14 @@
       "away": "Norway",
       "kickoffUtc": "2026-07-05T20:00:00Z",
       "venue": "MetLife Stadium, East Rutherford",
+      "stage": "round-of-16"
+    },
+    {
+      "id": 92,
+      "home": "Mexico",
+      "away": "England",
+      "kickoffUtc": "2026-07-06T00:00:00Z",
+      "venue": "Estadio Azteca, Mexico City",
       "stage": "round-of-16"
     }
   ]
