@@ -1,6 +1,7 @@
 {
-  "source": "FIFA public API, fetched 2026-07-02T00:12:42.507Z",
+  "source": "FIFA public API, fetched 2026-07-02T05:00:45.683Z",
   "eliminatedTeams": [
+    "Bosnia and Herzegovina",
     "Cote d'Ivoire",
     "Curacao",
     "Czechia",
@@ -813,6 +814,14 @@
       "away": "England",
       "kickoffUtc": "2026-07-06T00:00:00Z",
       "venue": "Estadio Azteca, Mexico City",
+      "stage": "round-of-16"
+    },
+    {
+      "id": 94,
+      "home": "United States",
+      "away": "Belgium",
+      "kickoffUtc": "2026-07-07T00:00:00Z",
+      "venue": "Lumen Field, Seattle",
       "stage": "round-of-16"
     }
   ]
