@@ -1,9 +1,10 @@
 {
-  "source": "FIFA public API, fetched 2026-07-02T23:11:43.245Z",
+  "source": "FIFA public API, fetched 2026-07-03T03:37:58.716Z",
   "eliminatedTeams": [
     "Austria",
     "Bosnia and Herzegovina",
     "Cote d'Ivoire",
+    "Croatia",
     "Curacao",
     "Czechia",
     "DR Congo",
@@ -815,6 +816,14 @@
       "away": "England",
       "kickoffUtc": "2026-07-06T00:00:00Z",
       "venue": "Estadio Azteca, Mexico City",
+      "stage": "round-of-16"
+    },
+    {
+      "id": 93,
+      "home": "Portugal",
+      "away": "Spain",
+      "kickoffUtc": "2026-07-06T19:00:00Z",
+      "venue": "AT&T Stadium, Arlington",
       "stage": "round-of-16"
     },
     {
