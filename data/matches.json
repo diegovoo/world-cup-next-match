@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-04T03:31:10.860Z",
+  "source": "FIFA public API, fetched 2026-07-04T06:50:00.605Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -13,6 +13,7 @@
     "DR Congo",
     "Ecuador",
     "Germany",
+    "Ghana",
     "Haiti",
     "Iran",
     "Iraq",
@@ -843,6 +844,14 @@
       "away": "Egypt",
       "kickoffUtc": "2026-07-07T16:00:00Z",
       "venue": "Mercedes-Benz Stadium, Atlanta",
+      "stage": "round-of-16"
+    },
+    {
+      "id": 96,
+      "home": "Switzerland",
+      "away": "Colombia",
+      "kickoffUtc": "2026-07-07T20:00:00Z",
+      "venue": "BC Place, Vancouver",
       "stage": "round-of-16"
     }
   ]
