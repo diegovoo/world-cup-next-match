@@ -1,10 +1,11 @@
 {
-  "source": "FIFA public API, fetched 2026-07-03T23:08:20.685Z",
+  "source": "FIFA public API, fetched 2026-07-04T03:31:10.860Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
     "Austria",
     "Bosnia and Herzegovina",
+    "Cabo Verde",
     "Cote d'Ivoire",
     "Croatia",
     "Curacao",
@@ -834,6 +835,14 @@
       "away": "Belgium",
       "kickoffUtc": "2026-07-07T00:00:00Z",
       "venue": "Lumen Field, Seattle",
+      "stage": "round-of-16"
+    },
+    {
+      "id": 95,
+      "home": "Argentina",
+      "away": "Egypt",
+      "kickoffUtc": "2026-07-07T16:00:00Z",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
       "stage": "round-of-16"
     }
   ]
