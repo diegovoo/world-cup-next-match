@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-04T23:00:50.265Z",
+  "source": "FIFA public API, fetched 2026-07-05T03:49:07.972Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -23,6 +23,7 @@
     "Netherlands",
     "New Zealand",
     "Panama",
+    "Paraguay",
     "Qatar",
     "Saudi Arabia",
     "Scotland",
@@ -854,6 +855,14 @@
       "kickoffUtc": "2026-07-07T20:00:00Z",
       "venue": "BC Place, Vancouver",
       "stage": "round-of-16"
+    },
+    {
+      "id": 97,
+      "home": "France",
+      "away": "Morocco",
+      "kickoffUtc": "2026-07-09T20:00:00Z",
+      "venue": "Gillette Stadium, Foxborough",
+      "stage": "quarterfinals"
     }
   ]
 }
