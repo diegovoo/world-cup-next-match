@@ -1,10 +1,11 @@
 {
-  "source": "FIFA public API, fetched 2026-07-05T22:04:45.865Z",
+  "source": "FIFA public API, fetched 2026-07-06T00:10:33.312Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
     "Austria",
     "Bosnia and Herzegovina",
+    "Brazil",
     "Cabo Verde",
     "Canada",
     "Cote d'Ivoire",
@@ -820,7 +821,7 @@
       "id": 92,
       "home": "Mexico",
       "away": "England",
-      "kickoffUtc": "2026-07-06T00:00:00Z",
+      "kickoffUtc": "2026-07-06T01:00:00Z",
       "venue": "Estadio Azteca, Mexico City",
       "stage": "round-of-16"
     },
