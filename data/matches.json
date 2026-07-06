@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-06T00:10:33.312Z",
+  "source": "FIFA public API, fetched 2026-07-06T05:14:59.416Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -21,6 +21,7 @@
     "Iraq",
     "Japan",
     "Jordan",
+    "Mexico",
     "Netherlands",
     "New Zealand",
     "Panama",
@@ -863,6 +864,14 @@
       "away": "Morocco",
       "kickoffUtc": "2026-07-09T20:00:00Z",
       "venue": "Gillette Stadium, Foxborough",
+      "stage": "quarterfinals"
+    },
+    {
+      "id": 99,
+      "home": "Norway",
+      "away": "England",
+      "kickoffUtc": "2026-07-11T21:00:00Z",
+      "venue": "Hard Rock Stadium, Miami Gardens",
       "stage": "quarterfinals"
     }
   ]
