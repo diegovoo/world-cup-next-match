@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-07T00:12:07.200Z",
+  "source": "FIFA public API, fetched 2026-07-07T04:55:33.380Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -37,6 +37,7 @@
     "Tunisia",
     "Turkey",
     "Turkiye",
+    "United States",
     "Uruguay",
     "Uzbekistan"
   ],
@@ -865,6 +866,14 @@
       "away": "Morocco",
       "kickoffUtc": "2026-07-09T20:00:00Z",
       "venue": "Gillette Stadium, Foxborough",
+      "stage": "quarterfinals"
+    },
+    {
+      "id": 98,
+      "home": "Spain",
+      "away": "Belgium",
+      "kickoffUtc": "2026-07-10T19:00:00Z",
+      "venue": "SoFi Stadium, Inglewood",
       "stage": "quarterfinals"
     },
     {
