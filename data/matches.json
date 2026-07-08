@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-07T22:12:59.563Z",
+  "source": "FIFA public API, fetched 2026-07-08T00:00:20.601Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -8,6 +8,7 @@
     "Brazil",
     "Cabo Verde",
     "Canada",
+    "Colombia",
     "Cote d'Ivoire",
     "Croatia",
     "Curacao",
@@ -883,6 +884,14 @@
       "away": "England",
       "kickoffUtc": "2026-07-11T21:00:00Z",
       "venue": "Hard Rock Stadium, Miami Gardens",
+      "stage": "quarterfinals"
+    },
+    {
+      "id": 100,
+      "home": "Argentina",
+      "away": "Switzerland",
+      "kickoffUtc": "2026-07-12T01:00:00Z",
+      "venue": "Arrowhead Stadium, Kansas City",
       "stage": "quarterfinals"
     }
   ]
