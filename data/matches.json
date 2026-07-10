@@ -1,9 +1,10 @@
 {
-  "source": "FIFA public API, fetched 2026-07-10T20:26:03.903Z",
+  "source": "FIFA public API, fetched 2026-07-10T22:08:13.279Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
     "Austria",
+    "Belgium",
     "Bosnia and Herzegovina",
     "Brazil",
     "Cabo Verde",
@@ -894,6 +895,14 @@
       "kickoffUtc": "2026-07-12T01:00:00Z",
       "venue": "Arrowhead Stadium, Kansas City",
       "stage": "quarterfinals"
+    },
+    {
+      "id": 101,
+      "home": "France",
+      "away": "Spain",
+      "kickoffUtc": "2026-07-14T19:00:00Z",
+      "venue": "AT&T Stadium, Arlington",
+      "stage": "semifinals"
     }
   ]
 }
