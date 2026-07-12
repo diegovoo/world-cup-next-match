@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-11T23:59:27.434Z",
+  "source": "FIFA public API, fetched 2026-07-12T03:47:35.093Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -39,6 +39,7 @@
     "South Africa",
     "South Korea",
     "Sweden",
+    "Switzerland",
     "Tunisia",
     "Turkey",
     "Turkiye",
@@ -903,6 +904,14 @@
       "away": "Spain",
       "kickoffUtc": "2026-07-14T19:00:00Z",
       "venue": "AT&T Stadium, Arlington",
+      "stage": "semifinals"
+    },
+    {
+      "id": 102,
+      "home": "England",
+      "away": "Argentina",
+      "kickoffUtc": "2026-07-15T19:00:00Z",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
       "stage": "semifinals"
     }
   ]
