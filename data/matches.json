@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-15T20:13:09.153Z",
+  "source": "FIFA public API, fetched 2026-07-15T22:04:40.030Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -17,7 +17,6 @@
     "DR Congo",
     "Ecuador",
     "Egypt",
-    "France",
     "Germany",
     "Ghana",
     "Haiti",
@@ -914,6 +913,21 @@
       "kickoffUtc": "2026-07-15T19:00:00Z",
       "venue": "Mercedes-Benz Stadium, Atlanta",
       "stage": "semifinals"
+    },
+    {
+      "id": 103,
+      "home": "France",
+      "away": "England",
+      "kickoffUtc": "2026-07-18T21:00:00Z",
+      "venue": "Hard Rock Stadium, Miami Gardens"
+    },
+    {
+      "id": 104,
+      "home": "Spain",
+      "away": "Argentina",
+      "kickoffUtc": "2026-07-19T19:00:00Z",
+      "venue": "MetLife Stadium, East Rutherford",
+      "stage": "final"
     }
   ]
 }
