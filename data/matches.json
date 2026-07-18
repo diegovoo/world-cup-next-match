@@ -1,5 +1,5 @@
 {
-  "source": "FIFA public API, fetched 2026-07-18T22:54:02.152Z",
+  "source": "FIFA public API, fetched 2026-07-18T23:57:03.233Z",
   "eliminatedTeams": [
     "Algeria",
     "Australia",
@@ -17,6 +17,8 @@
     "DR Congo",
     "Ecuador",
     "Egypt",
+    "England",
+    "France",
     "Germany",
     "Ghana",
     "Haiti",
