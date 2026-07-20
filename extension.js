@@ -171,6 +171,7 @@ function normalizeSchedule(schedule) {
     )).sort();
 
     return {
+        winner: schedule.winner,
         eliminatedTeams,
         teams,
         matches,
@@ -212,6 +213,7 @@ function mergeSchedules(bundledSchedule, remoteSchedule) {
     remoteSchedule.matches.forEach(match => byId.set(`${match.id}`, match));
 
     return normalizeSchedule({
+        winner: bundledSchedule.winner,
         eliminatedTeams: [
             ...bundledSchedule.eliminatedTeams,
             ...remoteSchedule.eliminatedTeams,
@@ -404,6 +406,9 @@ class NextMatchIndicator extends PanelMenu.Button {
         } else if (!team) {
             this._label.text = 'World Cup';
             this._addStatusItem('Choose a team in Preferences');
+        } else if (team === this._schedule.winner) {
+            this._label.text = `${formatTeam(team, showFlags)} — Winner`;
+            this._addStatusItem('World Cup winner');
         } else if (this._isTeamEliminated(team)) {
             this._label.text = `${formatTeam(team, showFlags)} was eliminated`;
             this._addStatusItem('Team was eliminated');
